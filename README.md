@@ -1,4 +1,4 @@
-<# RealTimeChatApp-Python
+#< RealTimeChatApp-Python
 ![7-tips-for-handling-social-media-criticsm-FECA57-700x425](https://github.com/ADRIDEV2024/RealTimeChatApp-Python/assets/163412333/87574a5b-d8ef-4d6b-bf15-ef1b3130e49a)
 
 
