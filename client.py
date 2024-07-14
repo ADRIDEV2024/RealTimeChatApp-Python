@@ -8,7 +8,7 @@ def messages_from_server(client):
     
    while 1:
         
-     message = client.recv(1024).decode("utf-8")
+   message = client.recv(1024).decode("utf-8")
      if message != " ":
          username = message.split("~")[0]
          content = message.split("~")[1]
