@@ -36,12 +36,12 @@ def communicate_to_server(client):
     else:
         print("Oopss, the username can´t be empty")
         exit(0)
-    threading.Thread(target=messages_from_server, args=(client,username)).start()
+    threading.Thread(target=messages_from_server, args=(client, )).start()
 
     
 def main():
     
-    #server = so.socket(so.AF_INET, so.SOCK_STREAM)
+    server = so.socket(so.AF_INET, so.SOCK_STREAM)
     
     try:
         server.connect((HOST,PORT))
