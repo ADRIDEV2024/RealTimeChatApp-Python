@@ -8,7 +8,7 @@ def messages_from_server(client):
     
    while 1:
         
-   message = client.recv(1024).decode("utf-8")
+     message = client.recv(1024).decode("utf-8")
      if message != " ":
          username = message.split("~")[0]
          content = message.split("~")[1]
@@ -36,7 +36,7 @@ def communicate_to_server(client):
     else:
         print("Oopss, the username can´t be empty")
         exit(0)
-    threading.Thread(target=messages_from_server, args=(client, )).start()
+    threading.Thread(target=messages_from_server, args=(client,username)).start()
 
     
 def main():
