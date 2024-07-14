@@ -3,7 +3,7 @@ import threading
 
 HOST = "190.169.1.135" # This is only a random IP
 PORT = 3000
-LISTEN_LIMIT = 20
+LISTEN_LIMIT = 10
 active_clients = [] # List of all currently connected clients
 
 def messages_from_server(client, username):
@@ -44,7 +44,7 @@ def client_handler(client):
                 break
             else:
                 print("Client username is empty")
-        threading.Thread(target=messages_from_server, args=(client, username)).start()
+        threading.Thread(target=messages_from_server, args=(client, )).start()
               
 def main():
     # Creating the socket object
