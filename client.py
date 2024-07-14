@@ -41,7 +41,7 @@ def communicate_to_server(client):
     
 def main():
     
-    server = so.socket(so.AF_INET, so.SOCK_STREAM)
+    #server = so.socket(so.AF_INET, so.SOCK_STREAM)
     
     try:
         server.connect((HOST,PORT))
