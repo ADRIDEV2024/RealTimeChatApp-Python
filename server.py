@@ -10,7 +10,7 @@ def messages_from_server(client, username):
     
    while 1:
         
-     message = client.recv(1024).decode("utf-8")
+     message = client.recv(2048).decode("utf-8")
      if message != " ":
          final_message = username + "~" + message
          send_messages_to_all(final_message)
@@ -38,7 +38,7 @@ def client_handler(client):
         # will contain the username
         while 1:
             
-            username = client.recv(1024).decode("utf-8")
+            username = client.recv(2048).decode("utf-8")
             if username != " ":
                 active_clients.append((username, client))
                 break
