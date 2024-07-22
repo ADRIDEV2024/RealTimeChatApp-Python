@@ -49,5 +49,4 @@ def main():
         print(f"Unable to connect to server {HOST},{PORT}",error)
         
 
-if __name__ == "__main__":
-    main()
+
