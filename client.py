@@ -6,7 +6,7 @@ PORT = 3000
 
 def messages_from_server(client):
     
-   while 1:
+   while True:
         
      message = client.recv(1024).decode("utf-8")
      if message != " ":
@@ -18,7 +18,7 @@ def messages_from_server(client):
         
 def send_message_to_server(client):
     
-    while 1:
+    while True:
         
         message = input("Message: ")
         if message != " ":
