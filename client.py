@@ -8,7 +8,7 @@ def messages_from_server(client):
     
    while True:
         
-     message = client.recv(1024).decode("utf-8")
+     message = client.recv(2048).decode("utf-8")
      if message != " ":
          username = message.split("~")[0]
          print(f"[{username}] {content}")
@@ -20,7 +20,7 @@ def send_message_to_server(client):
     
     while True:
         
-        message = input("Message: ")
+    message = input("Message: ")
         if message != " ":
             client.sendall(message.encode())
         else:
