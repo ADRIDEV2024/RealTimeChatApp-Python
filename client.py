@@ -20,7 +20,7 @@ def send_message_to_server(client):
     
     while True:
         
-    message = input("Message: ")
+        message = input("Message: ")
         if message != " ":
             client.sendall(message.encode())
         else:
@@ -45,6 +45,7 @@ def main():
     try:
         server.connect((HOST,PORT))
         print("Succesfull connection to the server")
+        
     except ConnectionRefusedError as error:
         print(f"Unable to connect to server {HOST},{PORT}",error)
         
