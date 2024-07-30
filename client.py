@@ -24,6 +24,7 @@ def send_message_to_server(client):
         
         if message != " ":
             client.sendall(message.encode())
+            
         else:
             print("Message is empty")
             exit(0)
@@ -34,13 +35,14 @@ def communicate_to_server(client):
     
     if username != " ":
         client.sendall(username.encode())
+        
     else:
         print("Oopss, the username can´t be empty")
         exit(0)
     threading.Thread(target=messages_from_server, args=(client, )).start()
 
     
-def main():
+def main(socket):
     
     server = so.socket(so.AF_INET, so.SOCK_STREAM)
     
