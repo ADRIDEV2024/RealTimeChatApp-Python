@@ -42,7 +42,7 @@ def communicate_to_server(client):
     threading.Thread(target=messages_from_server, args=(client, )).start()
 
     
-def main(socket):
+def main():
     
     server = so.socket(so.AF_INET, so.SOCK_STREAM)
     
