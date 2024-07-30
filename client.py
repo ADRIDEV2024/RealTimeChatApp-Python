@@ -9,14 +9,14 @@ def messages_from_server(client):
    while True:
         
      message = client.recv(1024).decode("utf-8")
-     if message != " ":
+     if message != "":
          username = message.split("~")[0]
          print(f"[{username}] {content}")
          
      else:
         print("Message recevied from client is empty")
         
-def send_message_to_server(client, username):
+def send_message_to_server(client):
     
     while True:
         
@@ -27,7 +27,7 @@ def send_message_to_server(client, username):
             print("Message is empty")
             exit(0)
 
-def communicate_to_server(client, username):
+def communicate_to_server(client):
     
     username = input("Enter your username: ")
     if username != " ":
