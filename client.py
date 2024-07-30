@@ -2,7 +2,7 @@ import socket as so
 import threading 
 
 HOST = "190.169.1.135" # This is only a random IP
-PORT = 5000
+PORT = 3000
 
 def messages_from_server(client):
     
@@ -16,7 +16,7 @@ def messages_from_server(client):
      else:
         print("Message recevied from client is empty")
         
-def send_message_to_server(client):
+def send_message_to_server(client, username):
     
     while True:
         
@@ -27,7 +27,7 @@ def send_message_to_server(client):
             print("Message is empty")
             exit(0)
 
-def communicate_to_server(client):
+def communicate_to_server(client, username):
     
     username = input("Enter your username: ")
     if username != " ":
