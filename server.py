@@ -3,12 +3,12 @@ import threading
 
 HOST = "190.169.1.135" # This is only a random IP
 PORT = 5000
-LISTEN_LIMIT = 20
+LISTEN_LIMIT = 5
 active_clients = [] # List of all currently connected clients
 
 def messages_from_server(client, username):
     
-   while 1:
+   while True:
         
      message = client.recv(2048).decode("utf-8")
      if message != " ":
