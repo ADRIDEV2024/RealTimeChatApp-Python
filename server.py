@@ -20,7 +20,7 @@ def messages_from_server(client, username):
          
          
 def send_messages_to_client(client, message):
-      pass
+      client.sendall(message.encode())
 
 def send_messages_to_all(message):
     """
