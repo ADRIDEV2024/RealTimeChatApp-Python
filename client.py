@@ -2,13 +2,13 @@ import socket as so
 import threading 
 
 HOST = "190.169.1.135" # This is only a random IP
-PORT = 8800
+PORT = 5000
 
 def messages_from_server(client):
     
    while True:
         
-     message = client.recv(2048).decode("utf-8")
+     message = client.recv(2048).decode("utf-6")
      if message != " ":
          username = message.split("~")[0]
          print(f"[{username}] {content}")
