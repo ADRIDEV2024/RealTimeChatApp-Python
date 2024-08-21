@@ -37,7 +37,7 @@ def client_handler(client):
         # will contain the username
         while 1:
             
-            username = client.recv(2048).decode("utf-8")
+            username = client.recv(2048).decode("latin")
             if username != " ":
                 active_clients.append((username, client))
                 break
@@ -50,12 +50,7 @@ def main():
     server = so.socket(so.AF_INET, so.SOCK_STREAM)
     # AF_INET for IPv4 addresses and SOCK_STREAM for TCP communications
     
-    try:
-        server.bind((HOST,PORT))
-        print("Server is running !")
-        
-    except ConnectionRefusedError as error:
-        print(f"It´s not possible to bind to host {HOST} and to port {PORT}",error)
+   
 
     server.listen(LISTEN_LIMIT)
     
