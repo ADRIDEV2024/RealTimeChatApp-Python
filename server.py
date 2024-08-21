@@ -10,7 +10,7 @@ def messages_from_server(client, username):
     
    while 1:
         
-     message = client.recv(2048).decode("utf-8")
+     message = client.recv(2048).decode("latin")
      if message != " ":
          final_message = username + "~" + message
          send_messages_to_all(final_message)
