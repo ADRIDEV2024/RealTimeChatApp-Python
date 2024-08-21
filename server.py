@@ -54,8 +54,8 @@ def main():
         server.bind((HOST,PORT))
         print("Server is running !")
         
-    except ConnectionRefusedError as error:
-        print(f"It´s not possible to bind to host {HOST} and to port {PORT}",error)
+    except ConnectionRefusedError as exception:
+        print(f"It´s not possible to bind to host {HOST} and to port {PORT}",exception)
 
     server.listen(LISTEN_LIMIT)
     
