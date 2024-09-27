@@ -21,7 +21,7 @@ def send_message_to_server(client):
         
         message = input("Message: ")
         
-        if message != " ":
+        if message != "":
             client.sendall(message.encode())
         else:
             print("Message is empty")
@@ -31,7 +31,7 @@ def communicate_to_server(client):
     
     username = input("Enter your username: ")
     
-    if username != " ":
+    if username != "":
         client.sendall(username.encode())
     else:
         print("Oopss, the username can´t be empty")
