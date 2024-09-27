@@ -33,11 +33,10 @@ def communicate_to_server(client):
     
     if username != " ":
         client.sendall(username.encode())
-        
     else:
         print("Oopss, the username can´t be empty")
         exit(0)
-    threading.Thread(target=messages_from_server, args=(client, )).start()
+     threading.Thread(target=messages_from_server, args=(client, )).start()
 
     
 def main():
@@ -50,6 +49,7 @@ def main():
         
     except ConnectionRefusedError as error:
         print(f"Unable to connect to server {HOST},{PORT}",error)
+        
         
 if __name__ == "__main__":
     main()
