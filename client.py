@@ -49,9 +49,9 @@ def send_message_to_server(client):
                 print("Empty message. Type something to send.")
                 
     except (ConnectionResetError, ConnectionAbortedError):
-        print("Connection lost. Unable to send message.")
+        logging.error("Connection lost. Unable to send message.")
     except Exception as e:
-        print(f"An error occurred while sending message: {e}")
+        logging.error(f"An error occurred while sending message: {e}")
     finally:
         client.close()
 
@@ -69,9 +69,9 @@ def communicate_to_server(client):
         threading.Thread(target=messages_from_server, args=(client,), daemon=True).start()
         send_message_to_server(client)
     except (ConnectionResetError, ConnectionAbortedError):
-        print("Connection error occurred. Exiting.")
+        logging.error("Connection error occurred. Exiting.")
     except Exception as e:
-        print(f"An error occurred: {e}")
+        logging.error(f"An error occurred: {e}")
     finally:
         client.close()
     
