@@ -10,18 +10,24 @@ LISTEN_LIMIT = 10
 ACTIVE_CLIENTS = [] 
 BUFFER_SIZE = 1024
 
-def messages_from_server(client, username):
-    
-   while 1:
+class ChatServer:
+    def __init__(self):
+        self.server_socket = None
+        self.client_sockets = []
+        self.clients = {}
+
+    def start(self):
+        self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         
-     message = client.recv(2048).decode("latin")
-     if message != " ":
-         final_message = username + "~" + message
-         send_messages_to_all(final_message)
-         
-     else:
-        print(f"The message send from client{username}is empty")
-         
+        try:
+            self.server_socket.bind((HOST, PORT))
+            self.server_socket.listen(LISTEN_LIMIT)
+            logger.info(f"Server is running on {HOST}:{PORT}")
+        except Exception as e:
+            logger.error(f"Failed to start server: {e}")
+            return
+
          
 def send_messages_to_client(client, message):
       client.sendall(message.encode())
