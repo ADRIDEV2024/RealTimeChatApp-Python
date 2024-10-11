@@ -1,9 +1,10 @@
 import socket as so
 import threading 
+import zlib
 
 HOST = "190.169.1.135" 
 PORT = 5000
-
+TIMEOUT = 10
 
 def messages_from_server(client):
     # Recibe y muestra mensajes del servidor
