@@ -75,7 +75,24 @@ def communicate_to_server(client):
     finally:
         client.close()
     
-
+def connect_with_retries():
+    retries = 0
+    while retries < MAX_RETRIES:
+        try:
+            with so.socket(so.AF_INET, so.SOCK_STREAM) as client:
+                client.settimeout(TIMEOUT)
+                logging.info(f"Connecting to {HOST}:{PORT} (Attempt {retries + 1})")
+                client.connect((HOST, PORT))
+                communicate_to_server(client)
+                break  # Exit loop if connection is successful
+        except (so.timeout, so.error) as e:
+            retries += 1
+            logging.warning(f"Connection attempt {retries} failed: {e}")
+            if retries < MAX_RETRIES:
+                logging.info(f"Retrying in {RETRY_DELAY} seconds...")
+                time.sleep(RETRY_DELAY)
+            else:
+                logging.error("Max retries reached. Could not connect to the server.")
         
 if __name__ == "__main__":
      try:
