@@ -6,6 +6,14 @@ HOST = "190.169.1.135"
 PORT = 5000
 TIMEOUT = 10
 
+def compress_message(message):
+    # Comprime el mensaje usando zlib
+    return zlib.compress(message.encode())
+
+def decompress_message(message):
+    # Descomprime el mensaje usando zlib
+    return zlib.decompress(message).decode()
+
 def messages_from_server(client):
     # Recibe y muestra mensajes del servidor
     try:
@@ -67,6 +75,7 @@ if __name__ == "__main__":
      try:
         with so.socket(so.AF_INET, so.SOCK_STREAM) as client:
             client.connect((HOST, PORT))
+            client.settimeout(TIMEOUT)
             communicate_to_server(client)
     except so.error as e:
         print(f"Could not connect to the server: {e}")
