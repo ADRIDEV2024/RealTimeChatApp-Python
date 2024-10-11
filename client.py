@@ -4,17 +4,7 @@ import threading
 HOST = "190.169.1.135" # This is only a random IP
 PORT = 5000
 
-def messages_from_server(client):
-    
-  while True:
-        
-     message = client.recv(2048).decode("latin")
-     if message != " ":
-         username = message.split("~")[0]
-         print(f"[{username}] {content}")
-     else:
-        print("Message recevied from client is empty")
-        
+
 def send_message_to_server(client):
     
     while True:
