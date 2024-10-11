@@ -1,10 +1,14 @@
 import socket as so
+import select
+import json
+import logging
 import threading 
 
 HOST = "190.169.1.135"
 PORT = 5000
 LISTEN_LIMIT = 10
 ACTIVE_CLIENTS = [] 
+BUFFER_SIZE = 1024
 
 def messages_from_server(client, username):
     
