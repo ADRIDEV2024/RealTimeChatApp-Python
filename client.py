@@ -43,15 +43,7 @@ def send_message_to_server(client):
 
 def communicate_to_server(client):
     
-    username = input("Enter your username: ")
-    
-    if username != "":
-        client.sendall(username.encode())
-    else:
-        print("Oopss, the username can´t be empty")
-        exit(0)
-     threading.Thread(target=messages_from_server, args=(client, )).start()
-
+  
     
 def main():
     
