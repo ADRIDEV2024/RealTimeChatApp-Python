@@ -4,7 +4,7 @@ import threading
 HOST = "190.169.1.135"
 PORT = 5000
 LISTEN_LIMIT = 10
-ACTIVE_CLIENTS = [] # List of all currently connected clients
+ACTIVE_CLIENTS = [] 
 
 def messages_from_server(client, username):
     
@@ -33,8 +33,6 @@ def send_messages_to_all(message):
 
 def client_handler(client):
     
-        # Server will listen for client messages that
-        # will contain the username
         while 1:
             
             username = client.recv(2048).decode("latin")
