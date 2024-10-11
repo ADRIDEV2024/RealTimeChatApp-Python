@@ -43,7 +43,22 @@ def send_message_to_server(client):
 
 def communicate_to_server(client):
     
-  
+   try:
+        username = input("Enter your username: ").strip()
+        if username:
+            client.sendall(username.encode())
+        else:
+            print("Username cannot be empty. Exiting.")
+            client.close()
+            return
+        threading.Thread(target=messages_from_server, args=(client,), daemon=True).start()
+        send_message_to_server(client)
+    except (ConnectionResetError, ConnectionAbortedError):
+        print("Connection error occurred. Exiting.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    finally:
+        client.close()
     
 def main():
     
