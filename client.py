@@ -23,17 +23,7 @@ def messages_from_server(client):
       finally:
             client.close()
 
-def send_message_to_server(client):
-    
-    while True:
-        
-        message = input("Message: ")
-        
-        if message != "":
-            client.sendall(message.encode())
-        else:
-            print("Message is empty")
-            exit(0)
+
 
 def communicate_to_server(client):
     
