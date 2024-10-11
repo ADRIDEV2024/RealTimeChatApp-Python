@@ -1,7 +1,7 @@
 import socket as so
 import threading 
 
-HOST = "190.169.1.135" # This is only a random IP
+HOST = "190.169.1.135" 
 PORT = 5000
 
 
@@ -23,6 +23,22 @@ def messages_from_server(client):
       finally:
             client.close()
 
+def send_message_to_server(client):
+    # Envía mensajes de entrada del usuario al servidor
+    try:
+        while True:
+            message = input("Message: ").strip()
+            if message:
+                client.sendall(message.encode())
+            else:
+                print("Empty message. Type something to send.")
+                
+    except (ConnectionResetError, ConnectionAbortedError):
+        print("Connection lost. Unable to send message.")
+    except Exception as e:
+        print(f"An error occurred while sending message: {e}")
+    finally:
+        client.close()
 
 
 def communicate_to_server(client):
