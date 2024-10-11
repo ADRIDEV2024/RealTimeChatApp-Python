@@ -1,10 +1,10 @@
 import socket as so
 import threading 
 
-HOST = "190.169.1.135" # This is only a random IP
+HOST = "190.169.1.135"
 PORT = 5000
 LISTEN_LIMIT = 10
-active_clients = [] # List of all currently connected clients
+ACTIVE_CLIENTS = [] # List of all currently connected clients
 
 def messages_from_server(client, username):
     
