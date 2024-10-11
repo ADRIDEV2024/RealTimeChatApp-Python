@@ -15,13 +15,13 @@ def messages_from_server(client):
                 print(f"[{username}] {content}")
             else:
                 print("Received an empty message from the server.")
-
-  except (ConnectionResetError, ConnectionAbortedError):
-        print("Connection lost. Exiting.")
-    except Exception as e:
-        print(f"An error occurred while receiving message: {e}")
-    finally:
-        client.close()
+    
+      except (ConnectionResetError, ConnectionAbortedError):
+            print("Connection lost. Exiting.")
+      except Exception as e:
+            print(f"An error occurred while receiving message: {e}")
+      finally:
+            client.close()
 
 def send_message_to_server(client):
     
