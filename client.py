@@ -1,10 +1,16 @@
 import socket as so
 import threading 
 import zlib
+import logging
+import time
 
 HOST = "190.169.1.135" 
 PORT = 5000
 TIMEOUT = 10
+RETRY_DELAY = 5 # Segundos de espera entre intentos de reconexión
+MAX_RETRIES = 3  # Máximo de intentos de reconexión
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 def compress_message(message):
     # Comprime el mensaje usando zlib
@@ -21,14 +27,14 @@ def messages_from_server(client):
             message = client.recv(1024).decode("utf-8")
             if message.strip():  # Verifica que el mensaje no esté vacío
                 username, content = message.split("~", 1)
-                print(f"[{username}] {content}")
+                logging.info(f"[{username}] {content}")
             else:
-                print("Received an empty message from the server.")
+                logging.warning("Received an empty message from the server.")
     
       except (ConnectionResetError, ConnectionAbortedError):
-            print("Connection lost. Exiting.")
+            logging.error("Connection lost. Exiting.")
       except Exception as e:
-            print(f"An error occurred while receiving message: {e}")
+            logging.error(f"An error occurred while receiving message: {e}")
       finally:
             client.close()
 
