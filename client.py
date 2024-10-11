@@ -60,17 +60,7 @@ def communicate_to_server(client):
     finally:
         client.close()
     
-def main():
-    
-    server = so.socket(so.AF_INET, so.SOCK_STREAM)
-    
-    try:
-        server.connect((HOST,PORT))
-        print("Succesfull connection to the server")
-        
-    except ConnectionRefusedError as error:
-        print(f"Unable to connect to server {HOST},{PORT}",error)
-        
+
         
 if __name__ == "__main__":
     main()
