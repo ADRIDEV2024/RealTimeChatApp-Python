@@ -46,6 +46,22 @@ class ChatServer:
 
             except Exception as e:
                 logger.error(f"Error in main loop: {e}")
+                
+def accept_new_connection(self):
+        client_socket, client_address = self.server_socket.accept()
+        if len(self.clients) >= LISTEN_LIMIT:
+            client_socket.send("Server is full".encode('utf-8'))
+            client_socket.close()
+            return
+
+        username = self.receive_message(client_socket)
+        if not username:
+            return
+
+        self.clients[client_socket] = username
+        self.client_sockets.append(client_socket)
+        logger.info(f"New connection from {client_address}, username: {username}")
+        self.broadcast_message(f"{username} has joined the chat!")
 
          
 def send_messages_to_client(client, message):
