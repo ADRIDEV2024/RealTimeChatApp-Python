@@ -5,6 +5,17 @@ HOST = "190.169.1.135" # This is only a random IP
 PORT = 5000
 
 
+def messages_from_server(client):
+    # Recibe y muestra mensajes del servidor
+    try:
+        while True:
+            message = client.recv(1024).decode("utf-8")
+            if message.strip():  # Verifica que el mensaje no esté vacío
+                username, content = message.split("~", 1)
+                print(f"[{username}] {content}")
+            else:
+                print("Received an empty message from the server.")
+                
 def send_message_to_server(client):
     
     while True:
