@@ -24,9 +24,28 @@ class ChatServer:
             self.server_socket.bind((HOST, PORT))
             self.server_socket.listen(LISTEN_LIMIT)
             logger.info(f"Server is running on {HOST}:{PORT}")
+            
         except Exception as e:
             logger.error(f"Failed to start server: {e}")
             return
+        
+        self.client_sockets.append(self.server_socket)
+
+        while True:
+            try:
+                read_sockets, _, exception_sockets = select.select(self.client_sockets, [], self.client_sockets)
+
+                for notified_socket in read_sockets:
+                    if notified_socket == self.server_socket:
+                        self.accept_new_connection()
+                    else:
+                        self.handle_client_message(notified_socket)
+
+                for notified_socket in exception_sockets:
+                    self.remove_client(notified_socket)
+
+            except Exception as e:
+                logger.error(f"Error in main loop: {e}")
 
          
 def send_messages_to_client(client, message):
