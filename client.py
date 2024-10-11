@@ -63,5 +63,10 @@ def communicate_to_server(client):
 
         
 if __name__ == "__main__":
-    main()
+     try:
+        with so.socket(so.AF_INET, so.SOCK_STREAM) as client:
+            client.connect((HOST, PORT))
+            communicate_to_server(client)
+    except so.error as e:
+        print(f"Could not connect to the server: {e}")
 
