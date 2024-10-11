@@ -103,3 +103,4 @@ if __name__ == "__main__":
     except so.error as e:
         print(f"Could not connect to the server: {e}")
 
+    connect_with_retries()
