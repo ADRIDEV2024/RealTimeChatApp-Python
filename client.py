@@ -41,7 +41,6 @@ def messages_from_server(client):
 def send_message_to_server(client):
     # Envía mensajes de entrada del usuario al servidor
     try:
-        while True:
             message = input("Message: ").strip()
             if message:
                 client.sendall(message.encode())
