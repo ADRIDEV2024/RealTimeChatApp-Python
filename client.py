@@ -7,7 +7,7 @@ import time
 HOST = "190.169.1.135" 
 PORT = 5000
 TIMEOUT = 10
-RETRY_DELAY = 5 # Segundos de espera entre intentos de reconexión
+RETRY_DELAY = 2  # Segundos de espera entre intentos de reconexión
 MAX_RETRIES = 3  # Máximo de intentos de reconexión
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
