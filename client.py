@@ -41,11 +41,11 @@ def messages_from_server(client):
 def send_message_to_server(client):
     # Envía mensajes de entrada del usuario al servidor
     try:
-            message = input("Message: ").strip()
-            if message:
-                client.sendall(message.encode())
-            else:
-                print("Empty message. Type something to send.")
+         message = input("Message: ").strip()
+         if message:
+            client.sendall(message.encode())
+         else:
+            print("Empty message. Type something to send.")
                 
     except (ConnectionResetError, ConnectionAbortedError):
         logging.error("Connection lost. Unable to send message.")
